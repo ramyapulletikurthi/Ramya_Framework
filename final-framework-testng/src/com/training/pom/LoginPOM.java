@@ -22,6 +22,9 @@ public class LoginPOM {
 	@FindBy(id="formLogin_submitAuth")
 	private WebElement loginBtn; 
 	
+	@FindBy(xpath = "//a[contains(text(),'Sign up!')]")
+	private WebElement signUp;
+	
 	public void sendUserName(String userName) {
 		this.userName.clear();
 		this.userName.sendKeys(userName);
@@ -34,5 +37,9 @@ public class LoginPOM {
 	
 	public void clickLoginBtn() {
 		this.loginBtn.click(); 
+	}
+	
+	public void clickSignUpBtn() {
+		this.signUp.click(); 
 	}
 }
