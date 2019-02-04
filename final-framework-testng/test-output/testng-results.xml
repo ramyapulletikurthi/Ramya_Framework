@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="20659" started-at="2019-01-24T11:04:46Z" finished-at="2019-01-24T11:05:07Z">
+  <suite name="Default suite" duration-ms="62624" started-at="2019-02-04T09:21:22Z" finished-at="2019-02-04T09:22:25Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="20659" started-at="2019-01-24T11:04:46Z" finished-at="2019-01-24T11:05:07Z">
-      <class name="com.training.functional.tests.AdminCreateCourse_ELTC033">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.functional.tests.AdminCreateCourse_ELTC033@7722c3c3]" name="setUpBeforeClass" is-config="true" duration-ms="19" started-at="2019-01-24T11:04:46Z" finished-at="2019-01-24T11:04:46Z">
+    <test name="Default test" duration-ms="62624" started-at="2019-02-04T09:21:22Z" finished-at="2019-02-04T09:22:25Z">
+      <class name="com.training.functional.tests.StudentSubscribeandTakeAssessment_ELTC065">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.functional.tests.StudentSubscribeandTakeAssessment_ELTC065@7722c3c3]" name="setUpBeforeClass" is-config="true" duration-ms="15" started-at="2019-02-04T09:21:22Z" finished-at="2019-02-04T09:21:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="setUp()[pri:1, instance:com.training.functional.tests.AdminCreateCourse_ELTC033@7722c3c3]" name="setUp" duration-ms="9434" started-at="2019-01-24T11:04:46Z" finished-at="2019-01-24T11:04:55Z">
+        <test-method status="PASS" signature="setUp()[pri:1, instance:com.training.functional.tests.StudentSubscribeandTakeAssessment_ELTC065@7722c3c3]" name="setUp" duration-ms="10605" started-at="2019-02-04T09:21:22Z" finished-at="2019-02-04T09:21:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="validLoginTest()[pri:2, instance:com.training.functional.tests.AdminCreateCourse_ELTC033@7722c3c3]" name="validLoginTest" duration-ms="3846" started-at="2019-01-24T11:04:55Z" finished-at="2019-01-24T11:04:59Z">
+        <test-method status="PASS" signature="validLoginTest()[pri:2, instance:com.training.functional.tests.StudentSubscribeandTakeAssessment_ELTC065@7722c3c3]" name="validLoginTest" duration-ms="5267" started-at="2019-02-04T09:21:33Z" finished-at="2019-02-04T09:21:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validLoginTest -->
-        <test-method status="PASS" signature="adminCreateCourse()[pri:3, instance:com.training.functional.tests.AdminCreateCourse_ELTC033@7722c3c3]" name="adminCreateCourse" duration-ms="5532" started-at="2019-01-24T11:04:59Z" finished-at="2019-01-24T11:05:05Z">
+        <test-method status="PASS" signature="studentSubscribeCourseandTakeAssessment()[pri:3, instance:com.training.functional.tests.StudentSubscribeandTakeAssessment_ELTC065@7722c3c3]" name="studentSubscribeCourseandTakeAssessment" duration-ms="46683" started-at="2019-02-04T09:21:38Z" finished-at="2019-02-04T09:22:25Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- adminCreateCourse -->
-        <test-method status="PASS" signature="tearDown()[pri:5, instance:com.training.functional.tests.AdminCreateCourse_ELTC033@7722c3c3]" name="tearDown" duration-ms="1794" started-at="2019-01-24T11:05:05Z" finished-at="2019-01-24T11:05:07Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.training.functional.tests.AdminCreateCourse_ELTC033 -->
+        </test-method> <!-- studentSubscribeCourseandTakeAssessment -->
+      </class> <!-- com.training.functional.tests.StudentSubscribeandTakeAssessment_ELTC065 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

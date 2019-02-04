@@ -9,6 +9,11 @@
          <class name = "com.training.functional.tests.AdminCreateCourse_ELTC033" />
          <class name = "com.training.functional.tests.AdminCreateClass_ELTC034" />
          <class name = "com.training.functional.tests.AdminSubscribeClassToCourse_ELTC035" />
+         <class name = "com.training.functional.tests.TeacherAddDescription_ELTC061" />
+         <class name = "com.training.functional.tests.TeacherCreateTest_ELTC062" />
+         <class name = "com.training.functional.tests.TeacherSendStrudentReport_ELTC063" />
+         <class name = "com.training.functional.tests.TeacherGenerateStudentReport_ELTC064" />
+         <class name = "com.training.functional.tests.StudentSubscribeandTakeAssessment_ELTC065" />
       </classes>
    </test>
 </suite>	

@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPOM {
-
 	private WebDriver driver;
 
 	public RegistrationPOM(WebDriver driver) {
