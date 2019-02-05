@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -123,7 +124,7 @@ public class TeacherCreateTest_ELTC062 {
 		teacherCreateTestPOM.clickTestPreview();
 		teacherCreateTestPOM.clickStartTest();
 		// answering first question
-		Thread.sleep(2000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		teacherCreateTestPOM.clickAnswerChoiceOne();
 		teacherCreateTestPOM.clickNextQuestion();
 		// answering second question

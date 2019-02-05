@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -56,13 +57,15 @@ public class StudentSubscribeandTakeAssessment_ELTC065 {
 		studentSubscribeandTakeAssessmentPOM.clickCourseCatlog();
 		studentSubscribeandTakeAssessmentPOM.searchCourseName("selenium");
 		studentSubscribeandTakeAssessmentPOM.clickSearchCourseSubmit();
-		studentSubscribeandTakeAssessmentPOM.subscribeCourse(coursename);
-		Thread.sleep(3000);
+		String subscribecourse = studentSubscribeandTakeAssessmentPOM.subscribeCourse(coursename);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		//verification of success message of subscription
+		if(subscribecourse == "Subscribe") {
 		String expected = "You have been registered to course: "+ coursename;
 		String actual = studentSubscribeandTakeAssessmentPOM.verifyCourseSubscriptionMessage();
 		assertEquals(actual, expected);
-		screenShot.captureScreenShot("SubscriptionSuccessMessage_ELTC_065");
+		screenShot.captureScreenShot("SubscriptionSuccessMessage_ELTC_0651");
+		}
 		//Click on My Courses tab
 		studentSubscribeandTakeAssessmentPOM.clickMyCourses();
 		//Open Course
@@ -73,12 +76,12 @@ public class StudentSubscribeandTakeAssessment_ELTC065 {
 		studentSubscribeandTakeAssessmentPOM.clickTestName();
 		//Start Test
 		studentSubscribeandTakeAssessmentPOM.clickStartTest();
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		//Answering first test question
 		studentSubscribeandTakeAssessmentPOM.clickAnswerChoiceOnce();
 		studentSubscribeandTakeAssessmentPOM.clickNextQuestion();
 		//Answering second test question
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		studentSubscribeandTakeAssessmentPOM.clickAnswerChoiceSecond();
 		studentSubscribeandTakeAssessmentPOM.clickTestEndTest();
 		//Verification of test submission and taking screenshot of results

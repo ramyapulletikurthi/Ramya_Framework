@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
@@ -54,17 +55,17 @@ public class TeacherAddDescription_ELTC061 {
 	}
 
 	@Test(priority = 3)
-	public void teacherAddNewCourse() throws InterruptedException {
+	public void teacherAddNewCourse() {
 		// teacherAddNewCoursePOM.clickHomePage();
 		teacherAddNewCoursePOM.clickCreateCourse();
-		teacherAddNewCoursePOM.sendCourseTitle("selenium");
+		teacherAddNewCoursePOM.sendCourseTitle("selenium345");
 		teacherAddNewCoursePOM.clickAdvanceSettings();
 		teacherAddNewCoursePOM.selectCourseCategory("(PROJ) Projects");
-		teacherAddNewCoursePOM.sendCourseCode("seleramyakri");
+		teacherAddNewCoursePOM.sendCourseCode("seleramyanandu23");
 		teacherAddNewCoursePOM.selectCourseLanguage("English");
 		teacherAddNewCoursePOM.clickCourseSubmit();
 		teacherAddNewCoursePOM.clickIntroductionButton();
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		teacherAddNewCoursePOM.sendIntroductionText("this is an selenium course");
 		teacherAddNewCoursePOM.clickSaveIntroText();
 	}
@@ -81,7 +82,7 @@ public class TeacherAddDescription_ELTC061 {
 	public void teacherAddCourseDescription() throws InterruptedException {
 		teacherAddDescriptionPOM.clickCourseDescription();
 		teacherAddDescriptionPOM.clickDescription();
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		teacherAddDescriptionPOM.sendCourseDescriptionTitle("selenium course for beginners");
 		teacherAddDescriptionPOM.sendCourseContentText("selenium course for beginners");
 		teacherAddDescriptionPOM.clickCourseDescriptionSubmit();	
@@ -98,7 +99,7 @@ public class TeacherAddDescription_ELTC061 {
 	@Test(priority = 7)
 	public void teacherAddCourseObjectives() throws InterruptedException {
 		teacherAddDescriptionPOM.clickCourseObjectives();
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		teacherAddDescriptionPOM.sendCourseObjectivesTitle("selenium course for beginners");
 		teacherAddDescriptionPOM.sendCourseObjectivesContentText("selenium course for beginners");
 		teacherAddDescriptionPOM.clickCourseObjectivesSubmit();
@@ -115,7 +116,7 @@ public class TeacherAddDescription_ELTC061 {
 	@Test(priority = 9)
 	public void teacherAddCourseTopics() throws InterruptedException {
 		teacherAddDescriptionPOM.clickCourseTopics();
-		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		teacherAddDescriptionPOM.sendCourseTopicsTitle("selenium course for beginners");
 		teacherAddDescriptionPOM.sendCourseTopicsContentText("selenium course for beginners");
 		teacherAddDescriptionPOM.clickCourseTopicsSubmit();	
