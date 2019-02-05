@@ -1,5 +1,8 @@
 package com.training.pom;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,8 +27,16 @@ public class AdminSubscribeClassToCoursePOM {
 	@FindBy(xpath = "//select[@class='ui-pg-selbox']")
 	private WebElement admin_maximizeclasseslist;
 
-	@FindBy(xpath = "//a[@href='add_courses_to_usergroup.php?id=87']")
-	private WebElement admin_subscribeclasstocourse;
+	@FindBy(xpath = "//table[@id='usergroups']/tbody/tr")
+	private List<WebElement> admin_subscribeclasstocourse;
+
+	private String coursebeforeXpath = "//table[@id='usergroups']/tbody/tr[";
+	private String courseafterXpath = "]/td[1]";
+
+	private String subscribebeforeXpath = "//table[@id='usergroups']/tbody/tr[";
+	private String subscribeafterXpath = "]/td[6]/a[2]";
+
+	private int j = 0;
 
 	@FindBy(xpath = "//select[@name='firstLetterUser']")
 	private WebElement admin_firstletterofcourse;
@@ -39,8 +50,8 @@ public class AdminSubscribeClassToCoursePOM {
 	@FindBy(xpath = "//button[contains(text(),'Subscribe class to courses')]")
 	private WebElement admin_subscribesubmitbutton;
 
-	@FindBy(xpath = "//tr[@id='87']//td[3]")
-	private WebElement admin_coursescount;
+	private String coursecountbeforeXpath = "//table[@id='usergroups']/tbody/tr[";
+	private String coursecountafterXpath = "]/td[3]";
 
 	public void clickAdminTab() {
 		this.admin_administrationtab.click();
@@ -55,9 +66,27 @@ public class AdminSubscribeClassToCoursePOM {
 		dropdown.selectByVisibleText(admin_maximizeclasseslist);
 	}
 
-	public void clickSubscribeClassToCourse() {
-		this.admin_subscribeclasstocourse.click();
+	// Method to find the required course and click on subscription
+	public void subscribeClassToCourse(String courseName) {
+		boolean namePresent = false;
+		List<WebElement> courserow = admin_subscribeclasstocourse;
+		int rowCount = courserow.size();
+		for (int i = 1; i <= rowCount; i++) {
+			String courseActualXpath = coursebeforeXpath + i + courseafterXpath;// xpath of the course name
+			WebElement element = driver.findElement(By.xpath(courseActualXpath));
+			if (element.getText().equals(courseName)) {
+				namePresent = true;
+				j = i;
+				break;
+			}
+		}
+		System.out.println(j);
+		String subscribeActualXpath = subscribebeforeXpath + j + subscribeafterXpath;
+		driver.findElement(By.xpath(subscribeActualXpath)).click();
+
 	}
+
+	// end of course selection and subscription
 
 	public void selectFirstLetterofCourse(String admin_firstletterofcourse) {
 		Select dropdown = new Select(this.admin_firstletterofcourse);
@@ -78,7 +107,8 @@ public class AdminSubscribeClassToCoursePOM {
 	}
 
 	public String verifyCourcesCount() {
-		String str1 = this.admin_coursescount.getText();
+		String coursecountActualXpath = coursecountbeforeXpath + j + coursecountafterXpath;
+		String str1 = driver.findElement(By.xpath(coursecountActualXpath)).getText();
 		return str1;
 	}
 

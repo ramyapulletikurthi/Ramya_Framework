@@ -45,7 +45,7 @@ public class TeacherAddNewCourse_ELTC032 {
 
 	@Test(priority = 2)
 	public void validLoginTest() {
-		loginPOM.sendUserName("Ramya890");
+		loginPOM.sendUserName("ramya89");
 		loginPOM.sendPassword("ramya@1989");
 		loginPOM.clickLoginBtn();
 	}
@@ -54,10 +54,10 @@ public class TeacherAddNewCourse_ELTC032 {
 	public void teacherAddNewCourse() throws InterruptedException {
 		// teacherAddNewCoursePOM.clickHomePage();
 		teacherAddNewCoursePOM.clickCreateCourse();
-		teacherAddNewCoursePOM.sendCourseTitle("selenium");
+		teacherAddNewCoursePOM.sendCourseTitle("seleniumbyramya");
 		teacherAddNewCoursePOM.clickAdvanceSettings();
 		teacherAddNewCoursePOM.selectCourseCategory("(PROJ) Projects");
-		teacherAddNewCoursePOM.sendCourseCode("seleramyakrishna");
+		teacherAddNewCoursePOM.sendCourseCode("selebyramyakrishna");
 		teacherAddNewCoursePOM.selectCourseLanguage("English");
 		teacherAddNewCoursePOM.clickCourseSubmit();
 		teacherAddNewCoursePOM.clickIntroductionButton();

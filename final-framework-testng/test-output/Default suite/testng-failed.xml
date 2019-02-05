@@ -3,12 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.functional.tests.StudentSubscribeandTakeAssessment_ELTC065">
+      <class name="com.training.functional.tests.AdminSubscribeClassToCourse_ELTC035">
         <methods>
-          <include name="studentSubscribeCourseandTakeAssessment"/>
+          <include name="verifyCourcesCount"/>
           <include name="setUpBeforeClass"/>
         </methods>
-      </class> <!-- com.training.functional.tests.StudentSubscribeandTakeAssessment_ELTC065 -->
+      </class> <!-- com.training.functional.tests.AdminSubscribeClassToCourse_ELTC035 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

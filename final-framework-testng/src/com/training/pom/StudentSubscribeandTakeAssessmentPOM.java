@@ -26,7 +26,7 @@ public class StudentSubscribeandTakeAssessmentPOM {
 	private WebElement student_searchcoursesubmit;
 	// Elements to find and click on the course subscription
 	@FindBy(xpath = "//div[@class='grid-courses']//div[@class='col-xs-12 col-sm-6 col-md-4']")
-	private List<WebElement> courses;
+	private List<WebElement> student_courses;
 
 	private String beforeXpath = "//div[@class='row']//div[@class='row']//div[";
 	private String afterXpath = "]//div[1]//div[2]//h4";
@@ -82,7 +82,7 @@ public class StudentSubscribeandTakeAssessmentPOM {
 	//Method to find the required course and click on subscription
 	public void subscribeCourse(String courseName) {
 		boolean namePresent = false;
-		List<WebElement> courserow = courses;
+		List<WebElement> courserow = student_courses;
 		int rowCount = courserow.size();
 
 		int j = 0;

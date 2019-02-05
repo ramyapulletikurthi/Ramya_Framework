@@ -56,7 +56,7 @@ public class AdminSubscribeClassToCourse_ELTC035 {
 		Thread.sleep(3000);
 		adminSubscribeClassToCoursePOM.selectMaximumFilterValue("All");
 		Thread.sleep(3000);
-		adminSubscribeClassToCoursePOM.clickSubscribeClassToCourse();
+		adminSubscribeClassToCoursePOM.subscribeClassToCourse("demobyramyapulleti");
 		adminSubscribeClassToCoursePOM.selectFirstLetterofCourse("S");
 		adminSubscribeClassToCoursePOM.selectSelectedCourse("Selenium (BL)");
 		adminSubscribeClassToCoursePOM.clickForwardButton();
