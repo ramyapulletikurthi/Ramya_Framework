@@ -34,6 +34,12 @@ public class TeacherAddDescriptionPOM {
 	
 	@FindBy(xpath = "//img[@title='Topics']")
 	private WebElement teacher_coursetopics;
+	
+	@FindBy(xpath="//a[@class='dropdown-toggle']")
+	private WebElement teacher_logoutdropdown;
+	
+	@FindBy(id = "logout_button")
+	private WebElement teacher_logoutbutton;
 
 	public void clickCourseDescription() {
 		this.teacher_coursedescription.click();
@@ -109,6 +115,14 @@ public class TeacherAddDescriptionPOM {
 	public String verifyCourseTopicsUpdateMessage(){
 		String str2 = this.teacher_courseupdatemessage.getText();
 		return str2;
+	}
+	
+	public void clickdropDownforLogout() {
+		this.teacher_logoutdropdown.click();
+	}
+	
+	public void clickLogoutButton() {
+		this.teacher_logoutbutton.click();
 	}
 
 }

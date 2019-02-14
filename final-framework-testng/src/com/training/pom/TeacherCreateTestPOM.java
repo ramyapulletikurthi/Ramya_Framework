@@ -15,8 +15,9 @@ public class TeacherCreateTestPOM {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath = "//img[@title='selenium']")
-	private WebElement teacher_coursename;
+//	@FindBy(xpath = "//img[@title='selenium']")
+	private String coursenamebeforexpath = "//img[@title='";
+	private String coursenameafterxpath = "']";
 	
 	@FindBy(xpath = "//img[@title='Tests']")
 	private WebElement teacher_testslink;
@@ -90,8 +91,9 @@ public class TeacherCreateTestPOM {
 	@FindBy(xpath = "//button[@name='save_now']")
 	private WebElement teacher_testendtest;
 	
-	public void clickCourseName() {
-		this.teacher_coursename.click();
+	public void clickCourseName(String coursename) {
+		String coursenameactualxpath = coursenamebeforexpath+coursename+coursenameafterxpath;
+		driver.findElement(By.xpath(coursenameactualxpath)).click();
 	}
 	
 	public void clickTestsLink() {

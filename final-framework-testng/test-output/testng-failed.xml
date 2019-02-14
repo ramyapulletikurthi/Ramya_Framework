@@ -3,19 +3,18 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.training.functional.tests.TeacherAddDescription_ELTC061">
+      <class name="com.training.functional.tests.TeacherCreateTest_ELTC95">
         <methods>
-          <include name="verifyObjectivesUpdateText"/>
-          <include name="teacherAddNewCourse"/>
-          <include name="teacherAddCourseTopics"/>
-          <include name="verifyTopicsUpdateText"/>
-          <include name="verifyIntroductionText"/>
-          <include name="teacherAddCourseDescription"/>
-          <include name="verifyDescriptionUpdateText"/>
+          <include name="teacherAddNewTest"/>
+          <include name="teacherAddQuestionToTest" invocation-numbers="0 1 2 3"/>
+          <include name="verifyTestCreatedMessage"/>
           <include name="setUpBeforeClass"/>
-          <include name="teacherAddCourseObjectives"/>
+          <include name="verifyTestQuestionAddedMessage"/>
+          <include name="verifyTestSubmittedMessage"/>
+          <include name="teacherPreviewAddTest"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- com.training.functional.tests.TeacherAddDescription_ELTC061 -->
+      </class> <!-- com.training.functional.tests.TeacherCreateTest_ELTC95 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

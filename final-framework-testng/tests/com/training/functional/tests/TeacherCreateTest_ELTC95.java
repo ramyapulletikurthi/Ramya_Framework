@@ -12,6 +12,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.training.dataproviders.RegistrationDataProviders;
 import com.training.generics.ScreenShot;
 import com.training.pom.LoginPOM;
 import com.training.pom.TeacherCreateTestPOM;
@@ -20,14 +21,14 @@ import com.training.utility.DriverNames;
 
 /*
  * Author  					: Ramya Krishna Pulletikurthi
- * Test Case ID				: ELTC_062
- * Test Case Description 	: To verify whether application allows teacher to create a Test 
+ * Test Case ID				: ELTC_095
+ * Test Case Description 	: To verify whether application allows teacher to author test with multiple questions 
  * PreCondition				: 1. User should have launched the application
 							  2. User should get logged in as Teacher
 							  3. User should have created course
  */
 
-public class TeacherCreateTest_ELTC062 {
+public class TeacherCreateTest_ELTC95 {
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
@@ -53,7 +54,7 @@ public class TeacherCreateTest_ELTC062 {
 		driver.get(baseUrl);
 	}
 
-	// Logged into application as teacher
+	// Logging to the application as Teacher
 	@Test(priority = 2)
 	public void validLoginTest() {
 		loginPOM.sendUserName("ramya89");
@@ -61,7 +62,7 @@ public class TeacherCreateTest_ELTC062 {
 		loginPOM.clickLoginBtn();
 	}
 
-	// Teacher adding a new test to the course
+	// Creating a Test for the selected course
 	@Test(priority = 3)
 	public void teacherAddNewTest() throws InterruptedException {
 		teacherCreateTestPOM.clickCourseName("selenium");
@@ -79,58 +80,41 @@ public class TeacherCreateTest_ELTC062 {
 		teacherCreateTestPOM.clickTestSubmitExercise();
 	}
 
-	// Verification of test added message
+	// Verification of Test created message
 	@Test(priority = 4)
 	public void verifyTestCreatedMessage() {
 		String expected = "Exercise added";
 		String actual = teacherCreateTestPOM.verifyTestCreatedMessage();
 		assertEquals(actual, expected);
-		screenShot.captureScreenShot("TestCreatedMessage_ELTC_062");
+		screenShot.captureScreenShot("TestCreatedMessage_ELTC_095");
 	}
 
-	@Test(priority = 5)
-	public void teacherAddFirstQuestionToTest() throws InterruptedException {
+	// Adding multiple choice question from the excel sheet to the test created
+	@Test(priority = 5, dataProvider = "TestData_ELTC095", dataProviderClass = RegistrationDataProviders.class)
+	public void teacherAddQuestionToTest(String Question, String FirstChoice, String SecondChoice, String ThirdChoice,
+			String FourthChoice) {
 		// adding first question with options
 		teacherCreateTestPOM.clickTestMultipleChoice();
-		teacherCreateTestPOM.sendTestQuestionName("which course your learning");
-		teacherCreateTestPOM.sendQuestionFirstOption("selenium");
-		teacherCreateTestPOM.sendQuestionSecondOption("java");
-		teacherCreateTestPOM.sendQuestionThirdOption("c");
-		teacherCreateTestPOM.sendQuestionFourthOption("c#");
+		teacherCreateTestPOM.sendTestQuestionName(Question);
+		teacherCreateTestPOM.sendQuestionFirstOption(FirstChoice);
+		teacherCreateTestPOM.sendQuestionSecondOption(SecondChoice);
+		teacherCreateTestPOM.sendQuestionThirdOption(ThirdChoice);
+		teacherCreateTestPOM.sendQuestionFourthOption(FourthChoice);
 		teacherCreateTestPOM.clickTestFirstRadioButton();
 		teacherCreateTestPOM.clickTestSubmitQuestion();
 	}
 
+	// Verification of Question Added Message
 	@Test(priority = 6)
-	public void verifyTestFirstQuestionAddedMessage() {
-		String expected = "1 questions, for a total score (all questions) of 0.";
+	public void verifyTestQuestionAddedMessage() {
+		String expected = "4 questions, for a total score (all questions) of 0.";
 		String actual = teacherCreateTestPOM.verifyTestQuestionAddedMessage();
 		assertEquals(actual, expected);
-		screenShot.captureScreenShot("TestFirstQuestionAddedMessage_ELTC_62");
+		screenShot.captureScreenShot("TestFirstQuestionAddedMessage_ELTC_95");
 	}
 
+	// Teacher Preview the created test with multiple choices question
 	@Test(priority = 7)
-	public void teacherAddSecondQuestionToTest() throws InterruptedException {
-		// adding second question with options
-		teacherCreateTestPOM.clickTestMultipleChoice();
-		teacherCreateTestPOM.sendTestQuestionName("which language are you using in selenium");
-		teacherCreateTestPOM.sendQuestionFirstOption("python");
-		teacherCreateTestPOM.sendQuestionSecondOption("java");
-		teacherCreateTestPOM.sendQuestionThirdOption("c");
-		teacherCreateTestPOM.sendQuestionFourthOption("c#");
-		teacherCreateTestPOM.clickTestSecondRadioButton();
-		teacherCreateTestPOM.clickTestSubmitQuestion();
-	}
-
-	@Test(priority = 8)
-	public void verifyTestSecondQuestionAddedMessage() {
-		String expected = "2 questions, for a total score (all questions) of 0.";
-		String actual = teacherCreateTestPOM.verifyTestQuestionAddedMessage();
-		assertEquals(actual, expected);
-		screenShot.captureScreenShot("TestSecondQuestionAddedMessage_ELTC_62");
-	}
-
-	@Test(priority = 9)
 	public void teacherPreviewAddTest() throws InterruptedException {
 		// preview the test
 		teacherCreateTestPOM.clickTestPreview();
@@ -140,18 +124,26 @@ public class TeacherCreateTest_ELTC062 {
 		teacherCreateTestPOM.clickAnswerChoiceOne();
 		teacherCreateTestPOM.clickNextQuestion();
 		// answering second question
-		teacherCreateTestPOM.clickAnswerChoiceSecond();
+		teacherCreateTestPOM.clickAnswerChoiceOne();
+		teacherCreateTestPOM.clickNextQuestion();
+		// answering third question
+		teacherCreateTestPOM.clickAnswerChoiceOne();
+		teacherCreateTestPOM.clickNextQuestion();
+		// answering fourth question
+		teacherCreateTestPOM.clickAnswerChoiceOne();
 		teacherCreateTestPOM.clickTestEndTest();
 	}
 
-	@Test(priority = 10)
+	// Verification of Test Preview message
+	@Test(priority = 8)
 	public void verifyTestSubmittedMessage() {
 		String expected = "Saved.";
 		String actual = teacherCreateTestPOM.verifyTestSubmittedMessage();
 		assertEquals(actual, expected);
-		screenShot.captureScreenShot("TestSubmittedMessage_ELTC_62");
+		screenShot.captureScreenShot("TestSubmittedMessage_ELTC_95");
 	}
 
+	// Closing of the application
 	@AfterClass
 	public void tearDown() throws Exception {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

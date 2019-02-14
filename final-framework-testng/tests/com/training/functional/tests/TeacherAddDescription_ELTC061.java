@@ -18,8 +18,15 @@ import com.training.pom.TeacherAddNewCoursePOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
+/*
+ * Author  					: Ramya Krishna Pulletikurthi
+ * Test Case ID				: ELTC_061
+ * Test Case Description 	: To verify whether application allows teacher to create a course, add description, objective & Topics 
+ * PreCondition				: 1. User should have launched the application
+							  2. User should get logged in as Teacher
+ */
 public class TeacherAddDescription_ELTC061 {
-	
+
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
@@ -27,7 +34,7 @@ public class TeacherAddDescription_ELTC061 {
 	private TeacherAddDescriptionPOM teacherAddDescriptionPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
 		properties = new Properties();
@@ -47,6 +54,7 @@ public class TeacherAddDescription_ELTC061 {
 		driver.get(baseUrl);
 	}
 
+	// Logged into application as Teacher
 	@Test(priority = 2)
 	public void validLoginTest() {
 		loginPOM.sendUserName("ramya89");
@@ -54,6 +62,7 @@ public class TeacherAddDescription_ELTC061 {
 		loginPOM.clickLoginBtn();
 	}
 
+	// Teacher adding course
 	@Test(priority = 3)
 	public void teacherAddNewCourse() {
 		// teacherAddNewCoursePOM.clickHomePage();
@@ -69,15 +78,17 @@ public class TeacherAddDescription_ELTC061 {
 		teacherAddNewCoursePOM.sendIntroductionText("this is an selenium course");
 		teacherAddNewCoursePOM.clickSaveIntroText();
 	}
-	
+
+	// Verification of Course added message
 	@Test(priority = 4)
 	public void verifyIntroductionText() {
 		String expected = "this is an selenium course";
 		String actual = teacherAddNewCoursePOM.verifyIntroText();
-		assertEquals(actual,expected);
+		assertEquals(actual, expected);
 		screenShot.captureScreenShot("IntroductionTextVerification_ELTC_061");
 	}
-	
+
+	// Adding course description
 	@Test(priority = 5)
 	public void teacherAddCourseDescription() throws InterruptedException {
 		teacherAddDescriptionPOM.clickCourseDescription();
@@ -85,17 +96,19 @@ public class TeacherAddDescription_ELTC061 {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		teacherAddDescriptionPOM.sendCourseDescriptionTitle("selenium course for beginners");
 		teacherAddDescriptionPOM.sendCourseContentText("selenium course for beginners");
-		teacherAddDescriptionPOM.clickCourseDescriptionSubmit();	
+		teacherAddDescriptionPOM.clickCourseDescriptionSubmit();
 	}
-	
+
+	// Verification of course description added message
 	@Test(priority = 6)
 	public void verifyDescriptionUpdateText() {
 		String expected = "The description has been updated";
 		String actual = teacherAddDescriptionPOM.verifyCourseDescriptionUpdateMessage();
-		assertEquals(actual,expected);
+		assertEquals(actual, expected);
 		screenShot.captureScreenShot("DescriptionUpdateVerification_ELTC_061");
 	}
-	
+
+	// Add Course objective
 	@Test(priority = 7)
 	public void teacherAddCourseObjectives() throws InterruptedException {
 		teacherAddDescriptionPOM.clickCourseObjectives();
@@ -104,35 +117,38 @@ public class TeacherAddDescription_ELTC061 {
 		teacherAddDescriptionPOM.sendCourseObjectivesContentText("selenium course for beginners");
 		teacherAddDescriptionPOM.clickCourseObjectivesSubmit();
 	}
-	
+
+	// Verification of course objective added message
 	@Test(priority = 8)
 	public void verifyObjectivesUpdateText() {
 		String expected = "The description has been updated";
 		String actual = teacherAddDescriptionPOM.verifyCourseTopicsUpdateMessage();
-		assertEquals(actual,expected);
+		assertEquals(actual, expected);
 		screenShot.captureScreenShot("ObjectivesUpdateVerification_ELTC_061");
 	}
-	
+
+	// Adding of course topics
 	@Test(priority = 9)
 	public void teacherAddCourseTopics() throws InterruptedException {
 		teacherAddDescriptionPOM.clickCourseTopics();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		teacherAddDescriptionPOM.sendCourseTopicsTitle("selenium course for beginners");
 		teacherAddDescriptionPOM.sendCourseTopicsContentText("selenium course for beginners");
-		teacherAddDescriptionPOM.clickCourseTopicsSubmit();	
+		teacherAddDescriptionPOM.clickCourseTopicsSubmit();
 	}
-	
+
+	//// Verification of course topics added message
 	@Test(priority = 10)
 	public void verifyTopicsUpdateText() {
 		String expected = "The description has been updated";
 		String actual = teacherAddDescriptionPOM.verifyCourseTopicsUpdateMessage();
-		assertEquals(actual,expected);
+		assertEquals(actual, expected);
 		screenShot.captureScreenShot("TopicsUpdateVerification_ELTC_061");
 	}
 
 	@Test(priority = 11)
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 }

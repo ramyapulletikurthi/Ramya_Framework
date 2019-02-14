@@ -18,6 +18,14 @@ import com.training.pom.StudentSubscribeandTakeAssessmentPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
+/*
+ * Author  					: Ramya Krishna Pulletikurthi
+ * Test Case ID				: ELTC_064
+ * Test Case Description 	: To verify whether application allows student to subscribe for the course & take the authored assessment 
+ * PreCondition				: 1. User should have launched the application
+							  2. User should get logged in as student
+							  3. Teacher should have created course with the assessment as online test
+ */
 public class StudentSubscribeandTakeAssessment_ELTC065 {
 	private WebDriver driver;
 	private String baseUrl;
@@ -44,6 +52,7 @@ public class StudentSubscribeandTakeAssessment_ELTC065 {
 		driver.get(baseUrl);
 	}
 
+	// Logged into application as student
 	@Test(priority = 2)
 	public void validLoginTest() {
 		loginPOM.sendUserName("ramya1107");
@@ -51,6 +60,7 @@ public class StudentSubscribeandTakeAssessment_ELTC065 {
 		loginPOM.clickLoginBtn();
 	}
 
+	// Subscribe a course and take the test available in the course
 	@Test(priority = 3)
 	public void studentSubscribeCourseandTakeAssessment() throws InterruptedException {
 		String coursename = "selenium123";
@@ -59,41 +69,41 @@ public class StudentSubscribeandTakeAssessment_ELTC065 {
 		studentSubscribeandTakeAssessmentPOM.clickSearchCourseSubmit();
 		String subscribecourse = studentSubscribeandTakeAssessmentPOM.subscribeCourse(coursename);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		//verification of success message of subscription
-		if(subscribecourse == "Subscribe") {
-		String expected = "You have been registered to course: "+ coursename;
-		String actual = studentSubscribeandTakeAssessmentPOM.verifyCourseSubscriptionMessage();
-		assertEquals(actual, expected);
-		screenShot.captureScreenShot("SubscriptionSuccessMessage_ELTC_0651");
+		// verification of success message of subscription
+		if (subscribecourse == "Subscribe") {
+			String expected = "You have been registered to course: " + coursename;
+			String actual = studentSubscribeandTakeAssessmentPOM.verifyCourseSubscriptionMessage();
+			assertEquals(actual, expected);
+			screenShot.captureScreenShot("SubscriptionSuccessMessage_ELTC_0651");
 		}
-		//Click on My Courses tab
+		// Click on My Courses tab
 		studentSubscribeandTakeAssessmentPOM.clickMyCourses();
-		//Open Course
+		// Open Course
 		studentSubscribeandTakeAssessmentPOM.clickOpenCourse();
-		//Open assessments
+		// Open assessments
 		studentSubscribeandTakeAssessmentPOM.clickAssessmentsIcon();
-		//Click on Test Name
+		// Click on Test Name
 		studentSubscribeandTakeAssessmentPOM.clickTestName();
-		//Start Test
+		// Start Test
 		studentSubscribeandTakeAssessmentPOM.clickStartTest();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		//Answering first test question
+		// Answering first test question
 		studentSubscribeandTakeAssessmentPOM.clickAnswerChoiceOnce();
 		studentSubscribeandTakeAssessmentPOM.clickNextQuestion();
-		//Answering second test question
+		// Answering second test question
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		studentSubscribeandTakeAssessmentPOM.clickAnswerChoiceSecond();
 		studentSubscribeandTakeAssessmentPOM.clickTestEndTest();
-		//Verification of test submission and taking screenshot of results
+		// Verification of test submission and taking screenshot of results
 		String expected1 = "Saved.";
 		String actual1 = studentSubscribeandTakeAssessmentPOM.verifyTestSubmittedMessage();
 		assertEquals(actual1, expected1);
 		screenShot.captureScreenShot("TestSubmittedMessage_ELTC_65");
 	}
-	
+
 	@AfterClass
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 }

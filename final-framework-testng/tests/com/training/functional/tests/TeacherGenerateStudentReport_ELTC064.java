@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -16,6 +17,14 @@ import com.training.pom.LoginPOM;
 import com.training.pom.TeacherGenerateStudentReportPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
+
+/*
+ * Author  					: Ramya Krishna Pulletikurthi
+ * Test Case ID				: ELTC_064
+ * Test Case Description 	: TO verify whether application allows teacher to generate report based on the student 
+ * PreCondition				: 1. User should have launched the application
+							  2. User should get logged in as Teacher
+ */
 
 public class TeacherGenerateStudentReport_ELTC064 {
 	private WebDriver driver;
@@ -42,7 +51,8 @@ public class TeacherGenerateStudentReport_ELTC064 {
 		// open the browser
 		driver.get(baseUrl);
 	}
-	
+
+	// Logged into application as teacher
 	@Test(priority = 2)
 	public void validLoginTest() {
 		loginPOM.sendUserName("ramya89");
@@ -50,8 +60,9 @@ public class TeacherGenerateStudentReport_ELTC064 {
 		loginPOM.clickLoginBtn();
 	}
 
+	// Selecting student and sending report to the student
 	@Test(priority = 3)
-	public void teacherGenerateStudentReport() throws InterruptedException {	
+	public void teacherGenerateStudentReport() throws InterruptedException {
 		teacherGenerateStudentReportPOM.clickReportingIcon();
 		teacherGenerateStudentReportPOM.clickFollowedStudents();
 		teacherGenerateStudentReportPOM.sendStudentSearchName("Ramya");
@@ -61,17 +72,17 @@ public class TeacherGenerateStudentReport_ELTC064 {
 		teacherGenerateStudentReportPOM.clickTestQuizIcon();
 		teacherGenerateStudentReportPOM.clickSendEmailCheckBox();
 		teacherGenerateStudentReportPOM.clickCorrectTestButton();
-		//verification of mail sent message
+		// verification of mail sent message
 		String expected = "Message Sent";
 		String actual = teacherGenerateStudentReportPOM.verifyMailSentMessage();
 		assertEquals(actual, expected);
 		screenShot.captureScreenShot("MailSentMessage_ELTC_064");
 		teacherGenerateStudentReportPOM.clickCourseNameLink();
 	}
-	
+
 	@AfterClass
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.quit();
 	}
 }
